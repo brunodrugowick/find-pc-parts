@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Search A Computer Hardware</title>
+</head>
+<body>
+    <form action="/index">
+        Product:
+
+        <input type="text" name="product" value="GTX 2080" th:value="${searchQuery}">
+        <input type="submit" value="Go!">
+    </form>
+
+    <table>
+        <tr th:each="product : ${products}">
+            <table>
+                <tr>
+                    <td th:text="${product.getName()}">GTX 2080</td>
+                </tr>
+                <tr>
+                    <td th:text="${product.getLink()}">http://</td>
+                </tr>
+                <tr>
+                    <td th:text="${product.getPromotional_price()}">R$ 5.000,00</td>
+                </tr>
+                <tr>
+                    <td th:text="${product.getRegular_price()}">R$ 5.000,00</td>
+                </tr>
+            </table>
+        </tr>
+
+    </table>
+
+</body>
+</html>
