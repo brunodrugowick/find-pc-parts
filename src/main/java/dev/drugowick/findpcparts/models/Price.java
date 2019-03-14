@@ -5,8 +5,7 @@ import lombok.Data;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Product {
-    private String link;
-    private String name;
-    private Price price;
+public class Price {
+    private String promotional_price;
+    private String regular_price;
 }

@@ -20,9 +20,8 @@ public class SearchController {
     public String search(
             @RequestParam String product,
             Model model) {
-        System.out.println("Starting search for " + product);
 
-        model.addAttribute("products", productService.searchEverywhere());
+        model.addAttribute("products", productService.searchEverywhere(product));
         model.addAttribute("searchQuery", product);
 
         return "index";

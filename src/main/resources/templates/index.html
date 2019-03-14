@@ -2,16 +2,18 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Search A Computer Hardware</title>
+    <title>Search A Computer Component</title>
 </head>
 <body>
+
+<!--TODO Make it shine!-->
+
     <form action="/index">
-        Product:
-
+        <h2>What do you want to buy?</h2>
         <input type="text" name="product" value="GTX 2080" th:value="${searchQuery}">
-        <input type="submit" value="Go!">
+        <input type="submit" value="Search">
     </form>
-
+    <br>
     <table>
         <tr th:each="product : ${products}">
             <table>
@@ -22,10 +24,13 @@
                     <td th:text="${product.getLink()}">http://</td>
                 </tr>
                 <tr>
-                    <td th:text="${product.getPromotional_price()}">R$ 5.000,00</td>
+                    <td th:text="${product.getPrice().getPromotional_price()}">R$ 5.000,00</td>
                 </tr>
                 <tr>
-                    <td th:text="${product.getRegular_price()}">R$ 5.000,00</td>
+                    <td th:text="${product.getPrice().getRegular_price()}">R$ 5.000,00</td>
+                </tr>
+                <tr>
+                    <hr/>
                 </tr>
             </table>
         </tr>
