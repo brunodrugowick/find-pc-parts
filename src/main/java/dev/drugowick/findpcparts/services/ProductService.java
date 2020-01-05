@@ -4,19 +4,21 @@ import dev.drugowick.findpcparts.models.Product;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.List;
+
 @Service
 public class ProductService implements SearchService<Product> {
 
-    @Override
-    public Product[] searchEverywhere(String product) {
+    private final CrawlerFeignClient crawlerFeignClient;
 
-        System.out.println("Starting search for " + product);
-        RestTemplate restTemplate = new RestTemplate();
-        Product[] products = restTemplate.getForObject(
-                "http://localhost:3000/" + product,
-                Product[].class
-        );
-        System.out.println("Result contains " + products.length + " items.");
+    public ProductService(CrawlerFeignClient crawlerFeignClient) {
+        this.crawlerFeignClient = crawlerFeignClient;
+    }
+
+    @Override
+    public List<Product> searchEverywhere(String product) {
+        List<Product> products = crawlerFeignClient.searchProducts(product);
+        System.out.println("Result contains " + products.size() + " items.");
 
         return products;
     }

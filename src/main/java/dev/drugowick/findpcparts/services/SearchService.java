@@ -2,9 +2,11 @@ package dev.drugowick.findpcparts.services;
 
 import dev.drugowick.findpcparts.models.Product;
 
+import java.util.List;
+
 public interface SearchService<T> {
 
-    Product[] searchEverywhere(String product);
+    List<Product> searchEverywhere(String product);
 
     //T findById(ID id);
 

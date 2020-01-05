@@ -16,23 +16,28 @@
     <br>
     <table>
         <tr th:each="product : ${products}">
-            <table>
-                <tr>
-                    <td th:text="${product.getName()}">GTX 2080</td>
-                </tr>
-                <tr>
-                    <td th:text="${product.getLink()}">http://</td>
-                </tr>
-                <tr>
-                    <td th:text="${product.getPrice().getPromotional_price()}">R$ 5.000,00</td>
-                </tr>
-                <tr>
-                    <td th:text="${product.getPrice().getRegular_price()}">R$ 5.000,00</td>
-                </tr>
-                <tr>
-                    <hr/>
-                </tr>
-            </table>
+            <td width="150">
+                <img th:src="${product.getPhoto()}" width="100%">
+            </td>
+            <td>
+                <table>
+                    <tr>
+                        <td th:text="${product.getName()}">GTX 2080</td>
+                    </tr>
+                    <tr>
+                        <td><a th:href="${product.getLink()}">Vá para a loja</a></td>
+                    </tr>
+                    <tr>
+                        <td th:text="${product.getPrice().getPromotional_price()}">R$ 5.000,00</td>
+                    </tr>
+                    <tr>
+                        <td th:text="${product.getPrice().getRegular_price()}">R$ 5.000,00</td>
+                    </tr>
+                    <tr>
+                        <td/>
+                    </tr>
+                </table>
+            </td>
         </tr>
 
     </table>
